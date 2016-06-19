@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="custom-well col-sm-8 col-sm-push-2">
+    <div class="container col-sm-12">
+      <h1 class="text-center"><%= @wiki.title %></h1>
+      <p><%= @wiki.body %></p>
+      <p class="text-center"><%= link_to "Edit Wiki", edit_wiki_path(@wiki) %></p>
+      <% if @wiki.user_id == current_user.id %>
+        <p class="text-center"><%= link_to 'Delete Wiki',  @wiki,  method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        <p class="text-center"><%= link_to "Back to My Wikis", wikis_path %></p>
+      <% else %>
+        <p class="text-center"><%= link_to "Back to Blocipedia Home", root_path %></p>
+      <% end %>
+    </div> <!-- container -->
+  </div> <!-- well -->
+</div> <!-- container -->

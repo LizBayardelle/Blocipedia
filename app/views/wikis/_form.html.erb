@@ -1,0 +1,11 @@
+<%= form_for(@wiki) do |f| %>
+  <%= f.label :title %><br>
+  <%= f.text_field :title, class: "form-control" %>
+
+  <%= f.label :body %><br>
+  <%= f.text_area :body, class: "form-control", style: "height: 250px" %>
+
+  <div class="text-center">
+    <%= f.submit "Create Wiki", class: "btn-custom" %>
+  </div> <!-- text-center -->
+<% end %>

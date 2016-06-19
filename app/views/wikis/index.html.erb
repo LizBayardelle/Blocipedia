@@ -1,0 +1,28 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>My Public Wikis</h1>
+    <h2>These are mine-all-mine. Bwah ha ha.</h2>
+    <h4><%= link_to "Create a New Wiki", new_wiki_path %>
+  </div> <!-- container -->
+</div> <!-- jumbotron -->
+
+<div class="container">
+  <div class="custom-well col-sm-8 col-sm-push-2">
+    <% if @wikis.count == 1 %>
+      <h2 class="text-center">You have <%= @wikis.count %> Public Wiki</h2>
+    <% else %>
+      <h2 class="text-center">You have <%= @wikis.count %> Public Wikis</h2>
+    <% end %>
+
+    <table style="width:100%">
+      <% @wikis.each do |wiki| %>
+        <tr>
+          <td><%= link_to wiki.title, wiki_path(wiki) %></td>
+          <td><%= link_to "Edit", wiki_path(wiki) %></td>
+          <td><%= link_to "Delete", wiki_path(wiki), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </table>
+
+  </div> <!-- well -->
+</div> <!-- container -->
