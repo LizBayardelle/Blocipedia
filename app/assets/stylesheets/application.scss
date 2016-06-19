@@ -1,0 +1,120 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+
+
+
+.custom-well {
+  border: thin solid #fa8072;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 25px;
+}
+
+.btn-custom {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: medium solid #fa8072;
+    border-radius: 5px;
+    font-weight: 700;
+    background: #6D6968;
+    color: #ffffff;
+}
+
+.btn-custom:hover {
+    border: medium solid #6D6968;
+    background: #fa8072;
+    color: #ffffff;
+}
+
+
+label {
+  padding-top: 15px;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: rgba(250,128,114, 0.8);
+  box-shadow: 0 1px 1px rgba(250,128,114, 0.075) inset, 0 0 8px rgba(250,128,114, 0.6);
+  outline: 0 none;
+}
+
+
+
+
+ #main-navbar.navbar-default .navbar-brand {
+     color: #fa8072;
+     font-weight: bolder;
+ }
+ #main-navbar.navbar-default {
+     font-size: 14px;
+     background-color: #6D6968;
+     border-width: 0px;
+     border-radius: 0px;
+     border-bottom: thick solid #fa8072
+ }
+ #main-navbar.navbar-default .navbar-nav>li>a {
+     color: #ffffff;
+     background-color: #6D6968;
+ }
+ #main-navbar.navbar-default .navbar-nav>li>a:hover,
+ #main-navbar.navbar-default .navbar-nav>li>a:focus {
+     color: rgba(0, 0, 0, 1);
+     background-color: rgba(255, 255, 255, 1);
+ }
+ #main-navbar.navbar-default .navbar-nav>.active>a,
+ #main-navbar.navbar-default .navbar-nav>.active>a:hover,
+ #main-navbar.navbar-default .navbar-nav>.active>a:focus {
+     color: rgba(85, 85, 85, 1);
+     background-color: rgba(255, 255, 255, 1);
+ }
+ #main-navbar.navbar-default .navbar-toggle {
+     border-color: #ffffff;
+ }
+ #main-navbar.navbar-default .navbar-toggle:hover,
+ #main-navbar.navbar-default .navbar-toggle:focus {
+     background-color: #ffffff;
+ }
+ #main-navbar.navbar-default .navbar-toggle .icon-bar {
+     background-color: #ffffff;
+ }
+ #main-navbar.navbar-default .navbar-toggle:hover .icon-bar,
+ #main-navbar.navbar-default .navbar-toggle:focus .icon-bar {
+     background-color: #8ce0ff;
+ }
+
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";

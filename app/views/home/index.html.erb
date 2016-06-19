@@ -1,0 +1,50 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>Blocipedia</h1>
+    <h2>Get together, write things, learn stuff.</h2>
+  </div> <!-- container -->
+</div> <!-- jumbotron -->
+
+<%= link_to new_user_registration_path do %>
+<div class="container">
+  <div class="col-sm-6 container">
+    <div class="custom-well eq text-center">
+      <h2>Free Plan</h2>
+      <h1><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></h1>
+      <h4>Create as many public wikis as&nbsp;you&nbsp;want!</h4>
+    </div> <!-- custom well -->
+  </div> <!-- container -->
+<% end %>
+
+  <div class="col-sm-6 container">
+    <div class="custom-well eq text-center">
+      <h2>Premium Plan</h2>
+      <h1><span class="glyphicon glyphicon-usd" aria-hidden="true"></span></h1>
+      <h4>Create private wikis!</h4>
+    </div> <!-- custom well -->
+  </div> <!-- container -->
+
+<%= link_to new_user_session_path do %>
+  <div class="col-sm-12 container">
+    <div class="custom-well text-center">
+      <h2>Already have an account?</h2>
+      <h4>Welcome back! Click here to sign back in!</h4>
+    </div> <!-- custom well -->
+  </div> <!-- container -->
+<% end %>
+
+</div> <!-- all wells container -->
+
+<script>
+$( document ).ready(function() {
+    var heights = $(".eq").map(function() {
+        return $(this).height();
+    }).get(),
+
+    maxHeight = Math.max.apply(null, heights);
+
+    $(".eq").height(maxHeight);
+
+    window.onresize = function(){ location.reload(); }
+});
+</script>
