@@ -8,12 +8,7 @@
 
 <div class="container">
   <div class="custom-well col-sm-8 col-sm-push-2">
-    <% if @wikis.count == 1 %>
-      <h2 class="text-center">You have <%= @wikis.count %> Public Wiki</h2>
-    <% else %>
-      <h2 class="text-center">You have <%= @wikis.count %> Public Wikis</h2>
-    <% end %>
-
+    <h2 class="text-center"><%= pluralize(@wikis.count, 'Public Wiki') %></h2>
     <table style="width:100%">
       <% @wikis.each do |wiki| %>
         <tr>

@@ -1,6 +1,6 @@
 class WikisController < ApplicationController
   def index
-    @wikis = Wiki.where(:user_id == current_user.id)
+    @wikis = Wiki.all
   end
 
   def show

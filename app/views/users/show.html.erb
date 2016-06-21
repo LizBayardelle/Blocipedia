@@ -1,8 +1,28 @@
-<div class="col-sm-8 col-sm-push-2 container">
-  <div class="custom-well text-center">
-    <h1><%= @user.name %>'s Stuff!</h1>
-    <h4><%= link_to '- Edit My Profile -', edit_user_registration_path %></h4>
+<div class="jumbotron">
+  <div class="container">
+    <h1>My Profile</h1>
+    <% if current_user.premium %>
+      <h2>I am currently a premium user.  Go me!</h2>
+    <% else %>
+      <h2>I'm currently a regular user, but wouldn't <%= link_to "premium", new_charge_path %> be more fun?
+    <% end %>
+    <p><%= link_to 'Edit My Profile', edit_user_registration_path %></p>
+  </div> <!-- container -->
+</div> <!-- jumbotron -->
 
-    <h4><%= link_to '- Sign Out -', destroy_user_session_path, :method => :delete %></h4>
-  </div> <!-- custom-well -->
-</div> <!-- container -->
+<div class="container">
+    <div class="custom-well col-sm-10 col-sm-push-1" style="margin-top: 30px; margin-bottom: 30px">
+        <h4 class="text-center" style="margin-bottom: 20px">You have <%= pluralize(@wikis.count, 'Public Wiki') %></h4>
+        <table style="width:100%" class="text-left">
+          <% @wikis.each do |wiki| %>
+            <tr>
+              <td><%= link_to wiki.title, wiki_path(wiki) %></td>
+              <td><%= link_to "Edit", wiki_path(wiki) %></td>
+              <td><%= link_to "Delete", wiki_path(wiki), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div> <!-- custom well -->
+    </div> <!-- container -->
+
+      <h4 class="text-center"><%= link_to '- Sign Out -', destroy_user_session_path, :method => :delete %></h4>

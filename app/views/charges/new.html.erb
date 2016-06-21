@@ -1,0 +1,29 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>Upgrade to Premium</h1>
+    <h2>With a premium account you'll be able to create private wikis.</h2>
+  </div> <!-- container -->
+</div> <!-- jumbotron -->
+
+<div class="container">
+  <div class="custom-well col-sm-8 col-sm-push-2">
+    <%= form_tag charges_path do %>
+      <article>
+        <% if flash[:error].present? %>
+          <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+          </div>
+        <% end %>
+        <label class="amount">
+          <p>Price: $15.00</p>
+        </label>
+      </article>
+
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-description="A month's subscription"
+              data-amount="1500"
+              data-locale="auto"></script>
+    <% end %>
+  </div> <!-- well -->
+</div> <!-- container -->
