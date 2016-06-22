@@ -1,6 +1,7 @@
 class WikisController < ApplicationController
   def index
-    @wikis = Wiki.all
+    @wikis = Wiki.order('created_at DESC')
+    @public_wikis = @wikis.where(private: false)
   end
 
   def show
@@ -28,7 +29,7 @@ class WikisController < ApplicationController
   def update
     @wiki = Wiki.find(params[:id])
     if @wiki.update_attributes(wiki_params)
-      redirect_to wikis_path
+      redirect_to @wiki
     else
       render action: :edit
     end
@@ -42,6 +43,6 @@ class WikisController < ApplicationController
 
   private
   def wiki_params
-    params.require(:wiki).permit(:user, :title, :body)
+    params.require(:wiki).permit(:user, :title, :body, :private)
   end
 end

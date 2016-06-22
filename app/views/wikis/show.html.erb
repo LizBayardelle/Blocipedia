@@ -6,7 +6,11 @@
       <p class="text-center"><%= link_to "Edit Wiki", edit_wiki_path(@wiki) %></p>
       <% if @wiki.user_id == current_user.id %>
         <p class="text-center"><%= link_to 'Delete Wiki',  @wiki,  method: :delete, data: { confirm: 'Are you sure?' } %></p>
-        <p class="text-center"><%= link_to "Back to My Wikis", wikis_path %></p>
+        <% if @wiki.private? %>
+          <p class="text-center"><%= link_to "Back to My Private Wikis", private_index_path %></p>
+        <% else %>
+          <p class="text-center"><%= link_to "Back to Public Wikis", wikis_path %></p>
+        <% end %>
       <% else %>
         <p class="text-center"><%= link_to "Back to Blocipedia Home", root_path %></p>
       <% end %>

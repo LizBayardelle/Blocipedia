@@ -1,16 +1,16 @@
 <div class="jumbotron">
   <div class="container">
-    <h1>Public Wikis</h1>
-    <h2>Behold, the grand stockpile of public wikis!</h2>
+    <h1>My Private Wikis</h1>
+    <h2>These are mine-all-mine. Bwah ha ha.</h2>
     <h4><%= link_to "Create a New Wiki", new_wiki_path %>
   </div> <!-- container -->
 </div> <!-- jumbotron -->
 
 <div class="container">
   <div class="custom-well col-sm-8 col-sm-push-2">
-    <h2 class="text-center"><%= pluralize(@public_wikis.count, 'Public Wiki') %></h2>
+    <h2 class="text-center"><%= pluralize(@private_wikis.count, 'Private Wiki') %></h2>
     <table style="width:100%">
-      <% @public_wikis.each do |wiki| %>
+      <% @private_wikis.each do |wiki| %>
         <tr>
           <td><%= link_to wiki.title, wiki_path(wiki) %></td>
           <td><%= link_to "Edit", wiki_path(wiki) %></td>
