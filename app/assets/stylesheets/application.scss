@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require epiceditor
  *= require_tree .
  *= require_self
  */
@@ -118,3 +119,4 @@ input[type="color"]:focus,
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ @import "epiceditor";
