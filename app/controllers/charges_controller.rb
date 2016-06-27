@@ -21,7 +21,7 @@ class ChargesController < ApplicationController
     if charge.paid == true
       current_user.update_attributes(premium: true)
       flash[:notice] = "You have been successfully upgraded to a premium account!"
-      redirect_to controller: 'home', action: 'index'
+      redirect_to controller: 'private', action: 'index'
     end
 
   rescue Stripe::CardError => e

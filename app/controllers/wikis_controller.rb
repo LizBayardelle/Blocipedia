@@ -1,7 +1,6 @@
 class WikisController < ApplicationController
   def index
-    @wikis = Wiki.order('created_at DESC')
-    @public_wikis = @wikis.where(private: false)
+    @wikis = policy_scope(Wiki)
   end
 
   def show
@@ -15,7 +14,7 @@ class WikisController < ApplicationController
 
   def create
     @wiki = Wiki.new(wiki_params)
-    @wiki.user = current_user
+    @wiki.owner = current_user
     if @wiki.save
       redirect_to @wiki
     else
@@ -45,6 +44,6 @@ class WikisController < ApplicationController
 
   private
   def wiki_params
-    params.require(:wiki).permit(:user, :title, :body, :private, :user_ids => [])
+    params.require(:wiki).permit(:user, :title, :body, :private, :owner, :user_ids => [])
   end
 end

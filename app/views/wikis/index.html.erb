@@ -8,9 +8,9 @@
 
 <div class="container">
   <div class="custom-well col-sm-8 col-sm-push-2">
-    <h2 class="text-center"><%= pluralize(@public_wikis.count, 'Public Wiki') %></h2>
+    <h2 class="text-center"><%= pluralize(@wikis.count, 'Public Wiki') %></h2>
     <table style="width:100%">
-      <% @public_wikis.each do |wiki| %>
+      <% @wikis.each do |wiki| %>
         <tr>
           <td><%= link_to wiki.title, wiki_path(wiki) %></td>
           <td><%= link_to "Edit", wiki_path(wiki) %></td>

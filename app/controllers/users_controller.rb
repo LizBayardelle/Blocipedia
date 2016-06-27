@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @wikis = current_user.wikis
-    @private_wikis = @wikis.where(private: true)
-    @public_wikis = @wikis.where(private: false)
+    @wikis = Wiki.where(owner: current_user)
+    @private_wikis = Wiki.where(private: true)
+    @public_wikis = Wiki.where(private: false)
   end
 
   def downgrade
