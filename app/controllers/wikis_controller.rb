@@ -6,6 +6,7 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.find(params[:id])
+    @users = @wiki.users.order(name: :asc)
   end
 
   def new
@@ -24,6 +25,7 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.find(params[:id])
+    @users = User.all.order(name: :asc)
   end
 
   def update
@@ -43,6 +45,6 @@ class WikisController < ApplicationController
 
   private
   def wiki_params
-    params.require(:wiki).permit(:user, :title, :body, :private)
+    params.require(:wiki).permit(:user, :title, :body, :private, :user_ids => [])
   end
 end

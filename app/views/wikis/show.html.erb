@@ -2,7 +2,14 @@
   <div class="custom-well col-sm-8 col-sm-push-2">
     <div class="container col-sm-12">
       <h1 class="text-center"><%= @wiki.title %></h1>
-      <p><%= markdown(@wiki.body) %></p>
+      <div class="well" style="margin-top: 15px"><%= markdown(@wiki.body) %></div>
+      <% if @wiki.private? %>
+        <h4>Collaborators</h4>
+          <ul><% @users.each do |user| %>
+            <li><%= user.name %></li>
+          <% end %>
+        </ul>
+      <% end %>
       <p class="text-center"><%= link_to "Edit Wiki", edit_wiki_path(@wiki) %></p>
       <% if @wiki.user_id == current_user.id %>
         <p class="text-center"><%= link_to 'Delete Wiki',  @wiki,  method: :delete, data: { confirm: 'Are you sure?' } %></p>

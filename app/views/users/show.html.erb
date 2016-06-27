@@ -1,6 +1,6 @@
 <div class="jumbotron">
   <div class="container">
-    <h1>My Profile</h1>
+    <h1><%= @user.name %>'s Profile</h1>
     <% if current_user.premium %>
       <h2>I am currently a premium user.  Go me!</h2>
     <% else %>
