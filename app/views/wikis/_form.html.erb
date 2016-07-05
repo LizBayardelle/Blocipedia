@@ -1,19 +1,22 @@
-<script type="text/javascript">
-  var editor = new EpicEditor().load();
-</script>
+
 
 <%= form_for(@wiki) do |f| %>
   <%= f.label :title %><br>
   <%= f.text_field :title, class: "form-control" %>
 
-  <%= f.label :body %><br>
-  <%= f.text_area :body, class: "form-control", style: "height: 250px", id: "epiceditor" %>
+<div class="row">
+  <div class="col-sm-6">
+    <%= f.label :body %><br>
+    <%= f.text_area :body, class: "form-control", style: "height: 250px", id: "wiki_body" %>
+  </div>
 
-  <script src="/static/lib/epiceditor/js/epiceditor.min.js">
-    var editor = new EpicEditor().load();
-  </script>
-
-  <div id="epiceditor"></div>
+  <div class="col-sm-6">
+    <label>Preview</label>
+    <div class="well" style="height: 250px">
+      <p id="wiki-preview"></p>
+    </div> <!-- showdown well -->
+  </div> <!-- well -->
+</div> <!-- row -->
 
   <% if current_user.admin? || current_user.premium? %>
     <%= f.label :private, class: 'checkbox' do %>
@@ -24,6 +27,7 @@
   <% if @wiki.private? %>
     <%= f.label "Add Collaborators", class: 'checkbox' %>
     <div style="height: 80px; overflow: scroll; border: thin grey solid; padding-left: 10px">
+      <%= hidden_field_tag "wiki[user_ids][]", nil%>
       <% @users.each do |user| %>
         <%= check_box_tag "wiki[user_ids][]", user.id, @wiki.users.include?(user) %>
         <%= user.name %><br>

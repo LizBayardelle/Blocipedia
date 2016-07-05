@@ -7,5 +7,4 @@ Rails.application.routes.draw do
   get 'private/index'
   resources :charges
   match "users/:id/downgrade" => "users#downgrade", :as => "downgrade_user", via: [:get, :post]
-  mount EpicEditor::Engine => "/"
 end

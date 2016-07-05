@@ -10,8 +10,10 @@ class ApplicationPolicy
     false
   end
 
-  def show?
-    scope.where(:id => record.id).exists?
+  def show
+    @wikis = current_user.wikis
+    @private_wikis = @wikis.where(private: true)
+    @public_wikis = Wiki.where(private: false)
   end
 
   def create?
@@ -32,22 +34,5 @@ class ApplicationPolicy
 
   def destroy?
     false
-  end
-
-  def scope
-    Pundit.policy_scope!(user, record.class)
-  end
-
-  class Scope
-    attr_reader :user, :scope
-
-    def initialize(user, scope)
-      @user = user
-      @scope = scope
-    end
-
-    def resolve
-      scope
-    end
   end
 end

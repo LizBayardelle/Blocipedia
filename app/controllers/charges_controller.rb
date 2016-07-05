@@ -1,4 +1,6 @@
 class ChargesController < ApplicationController
+  before_action :require_member
+
   def new
   end
 
@@ -28,4 +30,13 @@ class ChargesController < ApplicationController
     flash[:error] = e.message
     redirect_to new_charge_path
   end
+
+  private
+
+  def require_member
+    unless current_user
+      redirect_to new_user_registration_path
+    end
+  end
+
 end
